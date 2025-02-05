@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import TopFooter from "@/components/TopFooter";
+import TopHeader, { Header } from "@/components/Header";
+
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -12,6 +16,25 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+
+const getSatoshi= localFont({
+  src:"./fonts/Satoshi-Variable.ttf",
+  variable:"--font-satoshi-variable",
+  weight:'100 400 500'
+})
+
+const getIntegral= localFont({
+  src:"./fonts/Fontspring-DEMO-integralcf-bold.otf",
+  variable:"--font-integral-bold",
+  weight:'100 400 700 900'
+})
+
+const getIntegralBold= localFont({
+  src:"./fonts/Fontspring-DEMO-integralcf-regular.otf",
+  variable:"--font-integral",
+  weight:'100 400 700 900'
+})
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,9 +49,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${getSatoshi.variable}  ${getIntegral.variable} ${getIntegralBold.variable} ${geistMono.variable} ${geistSans.variable}  
+          antialiased  `}
       >
+        <TopHeader/>
+        <Header/>
+
+
         {children}
+        <TopFooter/>
+      
       </body>
     </html>
   );
